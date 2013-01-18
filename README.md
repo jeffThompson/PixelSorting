@@ -1,3 +1,5 @@
+![screenshot](http://www.jeffreythompson.org/blog/wp-content/uploads/2012/12/02-web.png)
+
 Pixel Sorting
 ============
 
