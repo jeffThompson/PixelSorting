@@ -1,0 +1,15 @@
+BATCH ROTATE ONLY VERTICAL IMAGES
+Jeff Thompson | 2012 | www.jeffreythompson.org
+
+Steps to orient all images the same way!
+
+1.
+Go to folder with your images on it
+	$ cd [drag folder in for full path]
+
+2.
+Rotate! Note: this will overwrite ALL files in it's path...
+	$ mogrify -verbose -rotate "90<" *
+
+The "verbose" option shows what's happening - especially nice
+for working with lots of image files.

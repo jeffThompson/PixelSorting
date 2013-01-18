@@ -1,0 +1,16 @@
+.DS_Store
+
+# ignore any resulting images (since there are a LOT) but not all image (since some are source files)
+results/
+sorted/
+output/
+processed/
+best/
+print/
+
+# ignore source files in folders (because there are likely LOTS)
+data/
+source/
+
+# output video files
+*.mov
