@@ -11,6 +11,7 @@ print/
 # ignore source files in folders (because there are likely LOTS)
 data/
 source/
+SourceImageFiles/
 
 # output video files
 *.mov
