@@ -1,5 +1,5 @@
 
-String filename = "highRes/whales.jpg";
+String filename = "../SourceImageFiles/algae.jpg";
 boolean saveIt = true;
 color[] seam;
 
@@ -28,10 +28,19 @@ void setup() {
   
   if (saveIt) {
     println("  Saving image to file...");
-    save("SpiralSort_" + filename);
+    filename = stripFileExtension(filename);
+    save("results/SpiralSort_" + filename + ".tiff");
   }
   
   println("DONE!");  
+}
+
+// strip file extension for saving and renaming
+String stripFileExtension(String s) {
+  s = s.substring(s.lastIndexOf('/')+1, s.length());
+  s = s.substring(s.lastIndexOf('\\')+1, s.length());
+  s = s.substring(0, s.lastIndexOf('.'));
+  return s;
 }
 
 void getSeam(int offset) {

@@ -15,7 +15,8 @@ SORT PIXEL PORTAL
  
  */
 
-String filename = "mountains/06.jpg";   // file to process
+String filename = "../SourceImageFiles/mountains/06.jpg";
+
 int maxIterations = 2000;               // max # of times to go through the image 
 int dist = 200;                         // maximum distance downward to travel
 int margin = 50;                        // margin of error for finding the next seed pixel

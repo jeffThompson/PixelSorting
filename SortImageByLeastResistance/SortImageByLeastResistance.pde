@@ -5,7 +5,7 @@ Jeff Thompson | 2012 | www.jeffreythompson.org
 
 */
 
-String filename = "highRes/06.jpg";
+String filename = "../SourceImageFiles/highRes/06.jpg";
 boolean saveIt = true;
 
 int startX, startY;
@@ -60,9 +60,18 @@ void setup() {
   
   if (saveIt) {
     println("  saving image to file...");
-    save("sorted/" + filename);
+    filename = stripFileExtension(filename);
+    save("results/LeastResistance_" + filename + ".tiff");
   }
   println("DONE!");
+}
+
+// strip file extension for saving and renaming
+String stripFileExtension(String s) {
+  s = s.substring(s.lastIndexOf('/')+1, s.length());
+  s = s.substring(s.lastIndexOf('\\')+1, s.length());
+  s = s.substring(0, s.lastIndexOf('.'));
+  return s;
 }
 
 void getSeam(int x, int y) {

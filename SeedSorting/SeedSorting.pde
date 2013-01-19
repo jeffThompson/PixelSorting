@@ -20,17 +20,24 @@ SEED SORTING (ie: sort with edge detection or random seeds)
  */
 
 // file to process
-String filename = "highRes/09.jpg";
+String filename = "../SourceImageFiles/mountains/01.jpg";
 
-boolean edgeSeed = true;                                // use edge-detection or random seed?
-boolean limitSeeds = true;                              // remove redundant seeds from edge-detection
-int distThresh = 100;                                   // remove seeds that are too close
-float thresh = 50;                                      // edge-detection threshold (lower = less edges)
-int numRandSeeds = 30;                                  // if using random seeds, how many to start?
-boolean getDiagonal = true;                             // get diagonal neighbors? true makes boxes, false diamonds
+// general settings
+boolean getDiagonal = true;                             // get diagonal neighbors? true makes boxes, false diamonds**
 int steps = 2500;                                       // # of steps to expand/sort
 boolean saveIt = true;                                  // save the result?
-boolean verbose = false;                                // tell us everything about what's happening?
+boolean verbose = true;                                 // tell us everything about what's happening?
+boolean edgeSeed = true;                                // use edge-detection or random seed?
+
+// ** note that if diagonal neighbors is disabled, some pixels may be unreachable (which can also be cool!)
+
+// edge-detection settings
+boolean limitSeeds = true;                              // remove redundant seeds from edge-detection
+int distThresh = 400;                                   // remove seeds that are too close
+float thresh = 0.1;                                       // edge-detection threshold (lower = less edges)
+
+// random seed settings
+int numRandSeeds = 30;                                  // if using random seeds, how many to start?
 
 ArrayList<Integer> seeds = new ArrayList<Integer>();    // seed pixels to find neighbors for**
 boolean[] traversed;                                    // keep track of pixels we have traversed

@@ -22,7 +22,8 @@ import toxi.util.datatypes.*;
  www.jeffreythompson.org
  */
 
-String filename = "sheep.jpg";           // file to start with
+String filename = "../../SouceImageFiles/sheep.jpg";
+
 int numIterations = 1000;                // how many times to rotate/sort
 boolean sortRegular = true;              // sort regular (colors as long #s) or "fancy" using the toxi lib**
 boolean reverseIt = false;               // sort ascending or descending?
@@ -149,12 +150,8 @@ void setup() {
 
     // save the result
     println("Saving file...");
-    if (filename.contains("_")) {
-      filename = filename.substring(0, filename.lastIndexOf('_')) + "_" + nf(rotAngle,6) + "degrees.png";
-    }
-    else {
-      filename = filename.substring(0, filename.lastIndexOf('.')) + "_" + nf(rotAngle,6) + "degrees.png";
-    }
+    filename = stripFileExtension(filename);
+    filename += "_" + nf(rotAngle, 6) + "degrees.png";
     rotAngle += 90;
     save(filename);
 
@@ -163,5 +160,13 @@ void setup() {
 
   // all finished!
   println("ALL DONE!");
+}
+
+// strip file extension for saving and renaming
+String stripFileExtension(String s) {
+  s = s.substring(s.lastIndexOf('/')+1, s.length());
+  s = s.substring(s.lastIndexOf('\\')+1, s.length());
+  s = s.substring(0, s.lastIndexOf('.'));
+  return s;
 }
 

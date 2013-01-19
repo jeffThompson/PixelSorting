@@ -15,7 +15,7 @@ import toxi.util.datatypes.*;
 
 // final int horizBlock = 5;
 // final int vertBlock = 49;
-
+String filename = "../SourceImageFiles/taco.jpg";
 boolean resizeIt = true;           // resize?
 final int outputWidth = 1920;      // pixels, or inches * resolution (300ppi)
 final int outputHeight = 1080;
@@ -27,7 +27,7 @@ PImage img;
 
 void setup() {
 
-  img = loadImage("taco.jpg");
+  img = loadImage(filename);
   size(img.width, img.height);
   int w = img.width/2;
   int h = img.height/2;

@@ -15,34 +15,7 @@
  www.jeffreythompson.org
  */
 
-/* file to read in:
- mountainLake.jpg
- face.jpg
- crowd.jpg
- missile.jpg
- sheep.jpg
- balloons.jpg
- snowyWoods.jpg
- explosion.jpg
- squirrel.jpg
- balugaWhale.jpg
- chili.jpg
- jungleScreensaver.jpg
- fireplace.jpg
- sphinx.jpg
- superMarioBrothers.png
- algae.jpg
- curry.jpg
- serialKiller.jpg
- poppies.jpg
- 
- also, mountain images:
- mountains/01.jpg - mountains/08.jpg
- 
- and high-resolution images:
- highRes/01.jpg - 10.jpg
- */
-String filename = "multiPass/01.png";
+String filename = "../../SourceImageFiles/algae.jpg";
 
 boolean reverseIt = true;
 boolean saveIt = true;
@@ -133,10 +106,18 @@ void setup() {
 
   if (saveIt) {
     println("Saving file...");
-    String f = filename.substring(0, filename.lastIndexOf('.'));
-    save("sortedImages/" + f + "_seamSort.png");
+    filename = stripFileExtension(filename);
+    save("results/SeamSort_" + filename + ".tiff");
   }
   
   println("DONE!");
+}
+
+// strip file extension for saving and renaming
+String stripFileExtension(String s) {
+  s = s.substring(s.lastIndexOf('/')+1, s.length());
+  s = s.substring(s.lastIndexOf('\\')+1, s.length());
+  s = s.substring(0, s.lastIndexOf('.'));
+  return s;
 }
 

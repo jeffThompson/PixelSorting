@@ -7,6 +7,7 @@ SORT IMAGE BY N PIXEL SEGMENTS
  
  */
 
+String filename = "../SourceImageFiles/taco.jpg";
 boolean saveIt = false;
 boolean saveAll = true;
 int numPx = 5;
@@ -14,7 +15,7 @@ PImage img;
 
 void setup() {
 
-  img = loadImage("taco.jpg");
+  img = loadImage(filename);
   size(img.width, img.height);
   image(img, 0,0);
 }
@@ -39,6 +40,14 @@ void draw() {
   }
 }
 
+// strip file extension for saving and renaming
+String stripFileExtension(String s) {
+  s = s.substring(s.lastIndexOf('/')+1, s.length());
+  s = s.substring(s.lastIndexOf('\\')+1, s.length());
+  s = s.substring(0, s.lastIndexOf('.'));
+  return s;
+}
+
 void mouseDragged() {
   img = loadImage("taco.jpg");
   numPx = int(map(mouseX, 0, width, 5, 100));
@@ -46,7 +55,8 @@ void mouseDragged() {
 
 void mouseReleased() {
   if (saveIt) {
-    save("SortNpx_" + numPx + ".png");
+    filename = stripFileExtension(filename);
+    save("results/SortNpx_" + filename + "_" + numPx + ".tiff");
   }
 }
 

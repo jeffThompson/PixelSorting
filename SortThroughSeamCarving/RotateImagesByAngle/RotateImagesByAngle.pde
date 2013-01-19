@@ -64,12 +64,21 @@ void draw() {
 
       // once rotated, save and continue
       String filename = new File(f[i]).getName();
-      save(sketchPath("") + "/rotated/" + filename);
+      filename = stripFileExtension(filename);
+      save("rotated/" + filename + ".tiff");
     }
 
     noLoop();
     exit();
   }
+}
+
+// strip file extension for saving and renaming
+String stripFileExtension(String s) {
+  s = s.substring(s.lastIndexOf('/')+1, s.length());
+  s = s.substring(s.lastIndexOf('\\')+1, s.length());
+  s = s.substring(0, s.lastIndexOf('.'));
+  return s;
 }
 
 // open an image file
