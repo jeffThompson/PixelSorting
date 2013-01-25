@@ -22,9 +22,9 @@ import toxi.util.datatypes.*;
  www.jeffreythompson.org
  */
 
-String filename = "../../SouceImageFiles/sheep.jpg";
+String filename = "../../SourceImageFiles/balugaWhale.jpg";
 
-int numIterations = 1000;                // how many times to rotate/sort
+int numIterations = 2;                   // how many times to rotate/sort
 boolean sortRegular = true;              // sort regular (colors as long #s) or "fancy" using the toxi lib**
 boolean reverseIt = false;               // sort ascending or descending?
 
@@ -36,6 +36,9 @@ int bottomIndex = 0;
 int rotAngle = 0;
 
 void setup() {
+  
+  // split off filename for use later
+  String filenameNoDetails = stripFileExtension(filename);
 
   // load, rotate, sort, repeat
   for (int iter = 0; iter<numIterations; iter++) {
@@ -150,8 +153,7 @@ void setup() {
 
     // save the result
     println("Saving file...");
-    filename = stripFileExtension(filename);
-    filename += "_" + nf(rotAngle, 6) + "degrees.png";
+    filename = "results/" + filenameNoDetails + "_" + nf(rotAngle, 6) + "degrees.tiff";
     rotAngle += 90;
     save(filename);
 

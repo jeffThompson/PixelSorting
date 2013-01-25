@@ -1,4 +1,7 @@
 
+import toxi.color.*;
+import toxi.util.datatypes.*;
+
 /*
 SEED SORTING (ie: sort with edge detection or random seeds)
  Jeff Thompson | 2013 | www.jeffreythompson.org
@@ -23,6 +26,7 @@ SEED SORTING (ie: sort with edge detection or random seeds)
 String filename = "../SourceImageFiles/mountains/01.jpg";
 
 // general settings
+boolean sortRegular = true;                             // use either toxi or Processing color sorting (NOT WORKING)
 boolean getDiagonal = true;                             // get diagonal neighbors? true makes boxes, false diamonds**
 int steps = 2500;                                       // # of steps to expand/sort
 boolean saveIt = true;                                  // save the result?
@@ -34,7 +38,7 @@ boolean edgeSeed = true;                                // use edge-detection or
 // edge-detection settings
 boolean limitSeeds = true;                              // remove redundant seeds from edge-detection
 int distThresh = 400;                                   // remove seeds that are too close
-float thresh = 0.1;                                       // edge-detection threshold (lower = less edges)
+float thresh = 0.1;                                     // edge-detection threshold (lower = less edges)
 
 // random seed settings
 int numRandSeeds = 30;                                  // if using random seeds, how many to start?
@@ -90,6 +94,7 @@ void draw() {
       println("  getting color values from neighboring pixels...");
     }
     color[] px = new color[seeds.size()];
+    ColorList cl = new ColorList();
     for (int i = seeds.size()-1; i >= 0; i--) {
       px[i] = pixels[seeds.get(i)];
     }
@@ -98,21 +103,34 @@ void draw() {
     if (verbose) {
       println("  sorting the results...");
     }
-    px = sort(px);
+    if (sortRegular) {
+      px = sort(px);
+    }
+    else {
+      cl.createFromARGBArray(px, img.pixels.length, false);
+      cl = cl.sortByCriteria(AccessCriteria.HUE, false);
+      println("    " + cl.size());
+    }
 
     // set the resulting pixels back into place
     if (verbose) {
       println("  setting sorted pixels into place...\n");
     }
-    for (int i = seeds.size()-1; i >= 0; i--) {
-      pixels[seeds.get(i)] = px[i];
+    //for (int i = seeds.size()-1; i >= 0; i--) {
+    for (int i=0; i<seeds.size(); i++) {
+      if (sortRegular) {
+        pixels[seeds.get(i)] = px[i];
+      }
+      else {
+        pixels[seeds.get(i)] = cl.get(i).toARGB();
+      }
     }
   }
+  updatePixels();        // update to display the results
 
   // so long as we're not at our limit (and not manually stopped) continue!
   if (step < steps && !finishIt) {
     step++;
-    updatePixels();    // update to display the results
   }
   else {
     // save results
@@ -122,7 +140,7 @@ void draw() {
 
     // all done!
     println("DONE!");
-    noLoop(); 
+    noLoop();
   }
 }
 

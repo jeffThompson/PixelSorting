@@ -7,6 +7,7 @@ output/
 processed/
 best/
 print/
+*.tiff
 
 # ignore source files in folders (because there are likely LOTS)
 data/
