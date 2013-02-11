@@ -25,7 +25,7 @@
 
 
 # must be a full path
-inputName="neon_sign"
+inputName="bowl_of_fruit"
 inputLocation="/Volumes/Storage/Documents/Processing/PixelSorting/SourceImageFiles/$inputName/"
 
 numIterations="10"					# how many times to rotate and sort

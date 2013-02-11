@@ -23,7 +23,7 @@ SEED SORTING (ie: sort with edge detection or random seeds)
  */
 
 // file to process
-String filename = "../SourceImageFiles/mountains/01.jpg";
+String filename = "../SourceImageFiles/StickPile.jpg";
 
 // general settings
 boolean sortRegular = true;                             // use either toxi or Processing color sorting (NOT WORKING)
@@ -31,7 +31,7 @@ boolean getDiagonal = true;                             // get diagonal neighbor
 int steps = 2500;                                       // # of steps to expand/sort
 boolean saveIt = true;                                  // save the result?
 boolean verbose = true;                                 // tell us everything about what's happening?
-boolean edgeSeed = true;                                // use edge-detection or random seed?
+boolean edgeSeed = false;                               // use edge-detection or random seed?
 
 // ** note that if diagonal neighbors is disabled, some pixels may be unreachable (which can also be cool!)
 
