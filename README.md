@@ -33,6 +33,7 @@ Based on the algorithm used for Photoshop's "Content-Aware Scaling", find the pa
 
 \[ [example](http://www.jeffreythompson.org/blog/2012/12/06/seam-sorting-rotate-and-iterate/) \]
 
+#### amazing work
 #### Spiral Sort
 The entire image is loaded in order from outer edge in, then sorted and placed back.
 
